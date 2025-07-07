@@ -1,0 +1,108 @@
+basePath: /api/v1
+definitions:
+  api.APIResponse:
+    properties:
+      data: {}
+      error:
+        type: string
+      message:
+        type: string
+      success:
+        type: boolean
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API B3.
+  title: B3 Challenge API
+  version: "1.0"
+paths:
+  /health:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      summary: Health check endpoint
+      tags:
+      - Health
+  /tickers:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+        "500":
+          description: Internal Server Error
+          schema: {}
+      summary: list all available tickers
+      tags:
+      - Tickers
+  /tickers/{ticker}/aggregation:
+    get:
+      parameters:
+      - description: Ticker symbol (e.g. PETR4, VALE3)
+        in: path
+        name: ticker
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      summary: Get aggregated data for a specific ticker
+      tags:
+      - Tickers
+  /trades:
+    get:
+      parameters:
+      - description: Start date in YYYY-MM-DD format
+        in: query
+        name: from
+        type: string
+      - description: End date in YYYY-MM-DD format
+        in: query
+        name: to
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.APIResponse'
+      summary: Get trades within a specific date range
+      tags:
+      - Trades
+swagger: "2.0"

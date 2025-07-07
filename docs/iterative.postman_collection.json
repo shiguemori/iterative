@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "9c33e0bc-66ca-40a6-b183-97d88be8d859",
+		"name": "iterative",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38701579"
+	},
+	"item": [
+		{
+			"name": "Health check endpoint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list all available tickers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/tickers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tickers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get aggregated data for a specific ticker",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/tickers/:ticker/aggregation?from=2025-07-01&to=2025-07-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tickers",
+						":ticker",
+						"aggregation"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2025-07-01"
+						},
+						{
+							"key": "to",
+							"value": "2025-07-01"
+						}
+					],
+					"variable": [
+						{
+							"key": "ticker",
+							"value": "WINQ25"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get trades within a specific date range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/trades?from=2024-01-01&to=2024-01-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"trades"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2024-01-01"
+						},
+						{
+							"key": "to",
+							"value": "2024-01-31"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
